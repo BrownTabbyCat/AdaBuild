@@ -1,0 +1,17 @@
+# flipside
+# Write a function flipside(s), which takes in a string s and returns a string whose first half is s's second half 
+# and whose second half is s's first half. If len(s) (the length of s) is odd, the first half of the input string 
+# should have one fewer character than the second half. Accordingly, the second half of the output string will be one shorter than the first half in these cases.
+
+def flipside(s):
+    half_string = len(s)//2
+    
+    return s[half_string:] + s[:half_string]
+
+# Tests below, do not change
+assert flipside('carpets') == 'petscar', f"Reported {flipside('carpets')} for flipside('carpets') instead of petscar"
+assert flipside('homework') == 'workhome', f"Reported {flipside('homework')} for flipside('homework') instead of workhome"
+assert flipside('ada') == 'daa', f"Reported {flipside('daa')} for flipside('ada') instead of daa"
+
+# If the program gets here, the code works!
+print("Your solution works!")
