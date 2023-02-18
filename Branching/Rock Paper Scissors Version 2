@@ -1,0 +1,18 @@
+#Rock Paper Scissors branching exercises
+# players' choices are hardcoded
+# Using "and" 
+
+player1 = "scissors"
+player2 = "paper"
+
+if player1 == "rock" and player2 == "rock" or player1 == "scissors" and player2 == "scissors" \
+  or player1 == "paper" and player2 == "paper":
+    print("It's a tie!")
+elif player1 == "rock" and player2 == "scissors" or  player1 == "paper" and player2 == "rock" \
+  or player1 == "scissors" and player2 == "paper":
+    print("Player 1 wins!")
+elif player1 == "rock" and player2 == "paper" or  player1 == "paper" and player2 == "scissors" \
+  or player1 == "scissors" and player2 == "rock":
+    print("Player 2 wins!")
+else:
+  print("hey did you pick rock, paper or scissors?")
