@@ -1,0 +1,46 @@
+import random
+
+# # Make a list that contains five student names (first and last).
+student_name = ["ROSIE MARTINEZ" ,	"JOE LIU"	, "SALLY SUE" ,	"BOB JOHNSON"	, "DELIA AGHO"]
+# print(student_name)
+
+# Write a loop to generate random student ID numbers from 111111 to 999999 and store those values in the student ID number list.
+ids = []
+for id in range(len(student_name)):
+  ids.append(random.randint(111111, 999999))
+# print(ids)
+
+# Write a loop to generate student email addresses in the format: 
+# (first initial)+(last name)+(last 3 digits of student ID number)@example.org 
+# and put these values in the student email list.
+
+# (first initial)
+first_initial = []
+for name in student_name:
+  first_initial.append(name[0])
+
+#(last name)
+last_name = []
+for name in student_name:
+  full_name = name.split(" ")
+  surname = full_name[1]
+  last_name.append(surname)
+
+#(last 3 digits of student ID number)@example.org
+last_three_digits = []
+for id in ids:
+  numbers_string = str(id)
+  digits = numbers_string[-3:]
+  last_three_digits.append(digits)
+
+# and put these values in the student email list.
+emails = []
+for i in range(len(student_name)):
+  email = first_initial[i] + last_name[i] + last_three_digits[i] + "@example.org"
+  emails.append(email)
+
+#print out student Name, ID and Email.
+for i in range(len(student_name)):
+  print(f"Name: {student_name[i]}")
+  print(f"ID: {ids[i]}")
+  print(f"Email: {emails[i]}\n")
