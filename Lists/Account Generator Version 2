@@ -1,0 +1,54 @@
+import random
+
+# List of student names
+student_names = []
+while True:
+  input_name = input("Name: ")
+  if input_name == "":
+    break
+  student_names.append(input_name)
+
+# Generate random student ID numbers
+student_ids = []
+for id in student_names:
+  random_id = random.randint(111111,999999)
+  if random_id not in student_ids:
+    student_ids.append(random_id)
+
+
+# Create student email addresses with the following: 
+# student email addresses in the format: 
+# (first initial)+(last name)+(last 3 digits of student ID number)@example.org
+
+student_emails = []
+
+for i in range(len(student_names)):
+  names_split = student_names[i].split(" ")
+
+  if len(names_split) > 2:
+    [first_firstname, second_firstname, last_name] = student_names[i].split(" ")
+  elif len(names_split) == 2:
+    first_initial = student_names[i][0]
+
+  last_name = student_names[i].split(" ")[-1]
+  last_three_digits = str(student_ids[i])[-3:]
+  
+  if int(last_three_digits) < 10 and len(names_split) > 2:
+    student_emails.append(first_firstname[0] + second_firstname[0] + last_name + "00" + str(last_three_digits) + "@example.org")
+  elif int(last_three_digits) < 100 and len(names_split) > 2:
+    student_emails.append(first_firstname[0] + second_firstname[0] + last_name + "0" + str(last_three_digits) + "@example.org")
+  elif int(last_three_digits) < 10 and len(names_split) == 2:
+    student_emails.append(first_initial + last_name + "0" + str(last_three_digits) + "@example.org")
+  elif int(last_three_digits) < 100 and len(names_split) == 2:
+    student_emails.append(first_initial + last_name + "0" + str(last_three_digits) + "@example.org")
+  elif len(names_split) > 2:
+    student_emails.append(first_firstname[0] + second_firstname[0] + last_name + "0" + str(last_three_digits) + "@example.org")
+  else:
+    student_emails.append(first_initial + last_name + last_three_digits + "@example.org")
+  
+# Print out student info
+for i in range(len(student_names)):
+  print(f"\nName:  {student_names[i]}")
+  print(f"ID:  {student_ids[i]}")
+  print(f"Email {student_emails[i]}")
+  print("\n")
