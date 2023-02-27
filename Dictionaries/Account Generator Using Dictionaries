@@ -1,0 +1,26 @@
+import random
+
+# Input student names
+student_names = []
+while True:
+  input_name = input("Name: ")
+  if input_name == "":
+    print()
+    break
+  student_names.append(input_name)
+
+
+
+student_data = []
+for i in range(len(student_names)):
+  student = {}
+  student["student_name"] = student_names[i]
+  student["student_id"] = random.randint(111111,999999)
+  [first_name, last_name] = student_names[i].split(" ")
+  student["student_email"] = first_name[0] + last_name + str(student["student_id"])[-3:] + "@example.org"
+  student_data.append(student)
+  
+for data in student_data:
+  for key in data:
+    print(f"{key}: {data[key]}")
+  print()
