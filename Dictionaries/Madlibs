@@ -1,0 +1,35 @@
+import random
+
+print("Welcome to my MadLib program. Please enter some information below:\n")
+
+#user input words
+madlib = [
+  {
+    "job": input("job: "),
+    "verb": input("verb: "),
+    "adjective": input("adjective: ")
+  },
+  {
+    "food": input("food: "),
+    "number": input("number: "),
+    "verb": input("verb: "),
+    "adjective": input("adjective: ")
+  },
+  {
+    "month": random.choice(["December,", "September", "July"]),
+    "verb": input("verb: "),
+    "adjective": input("adjective: ")
+  }
+]
+
+
+
+print(madlib)
+print(
+    f"\nMack worked as a {madlib[0]['job']} for {str(madlib[1]['number'])} years."
+    f"\nFor {str(madlib[1]['number'])} {random.choice([(madlib[0]['adjective']), (madlib[1]['adjective']), (madlib[2]['adjective'])])} years,"
+    f"\nMack had been {madlib[0]['verb']}ing. But one day, Mack decided to quit in {madlib[2]['month']} and {madlib[1]['verb']} instead."
+    f"\nThey declared that on this {random.choice([(madlib[0]['adjective']), (madlib[1]['adjective']), (madlib[2]['adjective'])])} day,"
+    f"\nthey would eat {madlib[1]['food']} and celebrate by {madlib[2]['verb']}ing."
+
+)
