@@ -1,0 +1,82 @@
+# Inventory with the items from the vending machine #
+inventory = [
+    {
+      "name": "Kitty Kibblers' Krazy Kibbles",
+      "item_number": "B4",
+      "price": 7,
+      "quantity": 0 
+    },
+    {
+      "name": "Fishy Paste",
+      "item_number": "H8",
+      "price": 3,
+      "quantity": 10 
+    },
+     {
+      "name": "Poultry Fiesta Mix",
+      "item_number": "L1",
+      "price": 10,
+      "quantity": 5 
+    },
+
+]
+
+def list_inventory():
+  for item in inventory: # Display items within the vending machine to the customer.
+    for key in item:
+      print(f"{key}: {item[key]}")
+    print()
+  return print("-------")
+
+def ada_vending(inventory): 
+  print("Welcome to Ada's Vending Machine!\nHere are the available items: ")
+  print()
+  print("-------")
+  print()
+  list_inventory()
+  
+  item_selected = False # Check customer's choice.
+  sufficient_funds = False # Check if customer has enough money
+  enough_quantity = True
+  print()
+
+  print("What would you like to select today?")
+  choice = input("My choice: ").upper()
+  for item in inventory: 
+    if choice == item.get("item_number"):
+      item_selected = True
+      print(f"Good choice. You selected {item.get('name')}.")
+      if item["quantity"] == 0:
+        enough_quantity = False
+        print(f"Sorry, we are out of {item['name']}. Choose agein.")
+        break
+        
+      print()
+
+      print("Now put in your money.")
+      fund = int(input("Insert money: $ "))
+
+      if fund >= item.get("price"):
+        sufficient_funds = True
+        change = fund - item.get("price")
+        print(f"Your change is ${change}.\n")
+        item["quantity"] = item.get("quantity") - 1 #why?
+        print()
+        print("Here are the available items: ")
+        print()
+        print("-------")
+        print()
+        list_inventory()    
+      elif sufficient_funds == False:
+        print(f"That is not enough money.")
+          
+  if item_selected == False:
+    print("That isn't a choice.")
+    # for item in inventory: # Display items within the vending machine to customers.
+    print(f"Please choose from {inventory[0]['item_number']}, {inventory[1]['item_number']} or {inventory[2]['item_number']}")
+    print()  
+  
+  
+  return f"-------"
+
+print(ada_vending(inventory))
